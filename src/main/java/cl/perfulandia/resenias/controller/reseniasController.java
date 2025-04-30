@@ -1,11 +1,12 @@
 package cl.perfulandia.resenias.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cl.perfulandia.resenias.Model.Usuario;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
 @RestController
+
 public class reseniasController {
 
     @GetMapping("/resenias")
@@ -18,4 +19,13 @@ public class reseniasController {
         return hashMap;
     }
 
+    @PostMapping("/crearResenias")
+    public HashMap<Integer,String> crearResenia(@RequestBody Usuario usuario) {
+
+        HashMap<Integer,String> hashMap = new HashMap<>();
+
+        hashMap.put(usuario.getId(), usuario.getResenia());
+
+        return hashMap;
+    }
 }
